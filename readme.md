@@ -1,3 +1,29 @@
+# ChilliSource particle system study (thesis fork)
+
+> [!WARNING]
+> Archived and no longer maintained; kept for reference. This is my 2016 fork of ChilliSource v1.6 for my master's thesis, not the official engine. The upstream project is [ChilliWorks/ChilliSource](https://github.com/ChilliWorks/ChilliSource), and its original README is below.
+
+## Overview
+
+I forked ChilliSource, an open-source C++ game engine, to study its particle system for my master's thesis at the University of Montana. This fork adds the instrumentation behind that study:
+
+- **Shiny integration** (`Source/CSProfiling/Shiny/`) for instrumented profiling on all platforms. It isn't thread safe, which is part of why I wrote my own metrics system.
+- **A metrics system** (`Source/CSProfiling/Metrics/`) that records render and timing metrics to CSV, with its own `put_time` and `to_string` so it builds on Android
+- **Particle system hooks** in `Source/ChilliSource/Rendering/Particle/` so the metrics can time each stage of the particle lifecycle and how long the update thread waits on locks
+
+My commits are the ones from March–June 2016 by angelahnicole; everything else is upstream. The lock-free and multiple-mutex variants I compared are excerpted in the thesis repo.
+
+**Tech:** C++, ChilliSource, Shiny, Windows/iOS/Android builds
+
+Related repos:
+
+- [um-thesis-particle-optimization](https://github.com/angiebrr/um-thesis-particle-optimization): the thesis itself, with results and the dataset
+- [um-thesis-cspong-benchmarking](https://github.com/angiebrr/um-thesis-cspong-benchmarking): the Pong game that ran the automated benchmarks against this fork
+
+---
+
+## Original ChilliSource README
+
 ![alt link](Documents/Images/ChilliSourceLogo.png)
 
 ChilliSource v1.6.0
